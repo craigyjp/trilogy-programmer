@@ -1,0 +1,14 @@
+Here is a list of parts being used or available to be used in the project depending on which way it goes
+
+Teensy 3.5 cuurently as the main board
+Halija CD74HC4067 16 channel multiplexor x9
+iHaospace PCA9685 16 Channel PWM driver (for led drivers)x1
+MakerHawk 1.5" oLED display 128x128 pixelswith SPI/I2C interfaces. SSD1327 driver chip
+4 digit 7 segment LED display. TM1637 driver chip. 2 signal wires
+TL074 quad op amp for sample and hold circuits
+
+Optional if required
+
+TLC5940NT 16 channel PWM driver chip (for LED drivers if required)
+HCF4051BE 8 channel mux chips if required
+Vishay 16x2 oLED display 016N002D-WPP5N0000
