@@ -1,15 +1,12 @@
-# trilogy-programmer
-A programmer to change a Crumar Trilogy into a programmable synth/strings/organ
+![](https://electrotechnique.github.io/etlogo.png)
 
-Initially the project is to design a replacement programming section for the aged Crumar Trilogy synth/strings/organ. It will allow all the settings of the trilogy where possible to be stored in 32 locations thus expanding the limited programming of the trilogy.
+# Teensy 3.6 based synthesizer using PJRC Audio Board and Audio Lib
 
-This application should lend itself to adding a programmer to any analogue synth with CV control for parameters, even a modular.
+Website: [electrotechnique.cc](https://electrotechnique.cc)
 
-It will be scalable with 16 way mux/demux 4017 boards from 16 to 64 inputs and outputs
+The pcb and front panel to build TSynth will be available around May 2020 from [Tindie](https://www.tindie.com/products/electrotechnique/tsynth-teensy-based-diy-programmable-poly-synth/) with SMD 4067 multiplexers, 6N138 opto-isolator, capacitors and resistors fitted. The entire cost of parts to build TSynth will be around $99 if you buy components from the cheaper suppliers and the build time around two hours to solder. Plans for a 3D printed/laser cut enclosure will be available.
+Questions: info@electrotechnique.cc
 
-Completed to a point where all the synth functions of the Trilogy can be stored in memory, not enough MUX/DEMUX channels left to complete the strings and organ sections.
+# Instructions
 
-Still to do.
-
-Add volume control of the synth, strings & organ to the programmer
-Add the VCF pedal switch into the programmer (I've never used the pedal so I dont know why)
+The source code requires Teensyduino from [PJRC](https://pjrc.com) to compile. You also need to put the files in Modified Libraries into the Teensy Audio folder to replace the installed versions. You also need CircularBuffer from Agileware, which is available in the Arduino Library Manager.
