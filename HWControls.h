@@ -2,14 +2,15 @@
 // It must be defined before Encoder.h is included.
 #define ENCODER_OPTIMIZE_INTERRUPTS
 #include <Encoder.h>
-#include <Bounce.h>
+#include "TButton.h"
 #include <ADC.h>
 #include <ADC_util.h>
 
 ADC *adc = new ADC();
 
-#define MUX1_S 38
-#define MUX2_S A22
+#define MUX1_S A19 // pin 38
+#define MUX2_S A22 // DAC1
+#define MUX3_S A10 // A10
 
 //Teensy 3.6 - Mux Pins
 #define MUX_0 28
@@ -24,6 +25,7 @@ ADC *adc = new ADC();
 
 #define DEMUX_EN_1 6
 #define DEMUX_EN_2 7
+#define DEMUX_EN_3 9
 
 //Mux 1 Connections
 #define MUX1_attack 0
@@ -61,6 +63,24 @@ ADC *adc = new ADC();
 #define MUX2_LfoMonoMulti 14
 #define MUX2_LfoDest 15
 
+//Mux 3 Connections
+#define MUX3_organ16 0
+#define MUX3_organ8 1
+#define MUX3_organ4 2
+#define MUX3_organ2 3
+#define MUX3_synthVolume 4
+#define MUX3_organVolume 5
+#define MUX3_stringsVolume 6
+#define MUX3_timbre 7
+#define MUX3_footages 8
+#define MUX3_stringAttack 9
+#define MUX3_stringRelease 10
+#define MUX3_11 11
+#define MUX3_12 12
+#define MUX3_13 13
+#define MUX3_14 14
+#define MUX3_15 15
+
 //Teensy 3.6 Pins
 #define OCTAVEMOD_SW 39
 #define SYNC_SW 30
@@ -70,7 +90,6 @@ ADC *adc = new ADC();
 #define SAVE_SW 24
 #define SETTINGS_SW 12
 #define BACK_SW 10
-//#define VOLUME_POT A10
 
 #define ENCODER_PINA 4
 #define ENCODER_PINB 5
@@ -81,33 +100,33 @@ ADC *adc = new ADC();
 #define OCTAVEMOD_LED 14
 
 #define MUXCHANNELS 16
+#define DEMUXCHANNELS 16
 #define QUANTISE_FACTOR 10
 
 #define DEBOUNCE 30
 
 static byte muxInput = 0;
+static byte muxOutput = 0;
 static int mux1ValuesPrev[MUXCHANNELS] = {};
 static int mux2ValuesPrev[MUXCHANNELS] = {};
+static int mux3ValuesPrev[MUXCHANNELS] = {};
 
 static int mux1Read = 0;
 static int mux2Read = 0;
+static int mux3Read = 0;
 
 static long encPrevious = 0;
 
 //These are pushbuttons and require debouncing
-Bounce octavemodSwitch = Bounce(OCTAVEMOD_SW, DEBOUNCE);
-Bounce syncSwitch = Bounce(SYNC_SW, DEBOUNCE);
-Bounce octave1Switch = Bounce(OCTAVE1_SW, DEBOUNCE);
-Bounce octave2Switch = Bounce(OCTAVE2_SW, DEBOUNCE);
+TButton octavemodSwitch{OCTAVEMOD_SW, LOW, HOLD_DURATION, DEBOUNCE, CLICK_DURATION};
+TButton syncSwitch{SYNC_SW, LOW, HOLD_DURATION, DEBOUNCE, CLICK_DURATION};
+TButton octave1Switch{OCTAVE1_SW, LOW, HOLD_DURATION, DEBOUNCE, CLICK_DURATION};
+TButton octave2Switch{OCTAVE2_SW, LOW, HOLD_DURATION, DEBOUNCE, CLICK_DURATION};
 
-Bounce recallButton = Bounce(RECALL_SW, DEBOUNCE); //On encoder
-boolean recall = true; //Hack for recall button
-Bounce saveButton = Bounce(SAVE_SW, DEBOUNCE);
-boolean del = true; //Hack for save button
-Bounce settingsButton = Bounce(SETTINGS_SW, DEBOUNCE);
-boolean reini = true; //Hack for settings button
-Bounce backButton = Bounce(BACK_SW, DEBOUNCE);
-boolean panic = true; //Hack for back button
+TButton recallButton{RECALL_SW, LOW, HOLD_DURATION, DEBOUNCE, CLICK_DURATION};
+TButton saveButton{SAVE_SW, LOW, HOLD_DURATION, DEBOUNCE, CLICK_DURATION};
+TButton settingsButton{SETTINGS_SW, LOW, HOLD_DURATION, DEBOUNCE, CLICK_DURATION};
+TButton backButton{BACK_SW, LOW, HOLD_DURATION, DEBOUNCE, CLICK_DURATION};
 Encoder encoder(ENCODER_PINB, ENCODER_PINA);//This often needs the pins swapping depending on the encoder
 
 void setupHardware()
@@ -147,9 +166,11 @@ void setupHardware()
 
   pinMode(DEMUX_EN_1, OUTPUT);
   pinMode(DEMUX_EN_2, OUTPUT);
+  pinMode(DEMUX_EN_3, OUTPUT);
   
-  digitalWrite(DEMUX_EN_1, HIGH);
-  digitalWrite(DEMUX_EN_2, HIGH);
+  digitalWriteFast(DEMUX_EN_1, HIGH);
+  digitalWriteFast(DEMUX_EN_2, HIGH);
+  digitalWriteFast(DEMUX_EN_3, HIGH);
 
   analogWriteResolution(10);
   analogReadResolution(10);

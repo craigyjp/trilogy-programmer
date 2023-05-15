@@ -5,6 +5,7 @@
 #define EEPROM_PITCHBEND 2
 #define EEPROM_MODWHEEL_DEPTH 3
 #define EEPROM_ENCODER_DIR 4
+#define EEPROM_LAST_PATCH 5
 
 int getMIDIChannel() {
   byte midiChannel = EEPROM.read(EEPROM_MIDI_CH);
@@ -63,4 +64,15 @@ boolean getEncoderDir() {
 void storeEncoderDir(byte encoderDir)
 {
   EEPROM.update(EEPROM_ENCODER_DIR, encoderDir);
+}
+
+int getLastPatch() {
+  int lastPatchNumber = EEPROM.read(EEPROM_LAST_PATCH);
+  if (lastPatchNumber < 1 || lastPatchNumber > 999) lastPatchNumber = 1;
+  return lastPatchNumber;
+}
+
+void storeLastPatch(int lastPatchNumber)
+{
+  EEPROM.update(EEPROM_LAST_PATCH, lastPatchNumber);
 }

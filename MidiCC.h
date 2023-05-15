@@ -30,3 +30,14 @@
 #define   CCButtonA 90
 #define   CCButtonB 93
 #define   CCButtonC 92
+#define   CCsynthVolume 11
+#define   CCorganVolume 80
+#define   CCstringsVolume 81
+#define   CCorgan16 82
+#define   CCorgan8 83
+#define   CCorgan4 84
+#define   CCorgan2 85
+#define   CCtimbre 86
+#define   CCfootages 87
+#define   CCstringAttack 89
+#define   CCstringRelease 96
