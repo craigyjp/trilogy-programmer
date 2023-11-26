@@ -1,7 +1,7 @@
 Here is a list of parts being used or available to be used in the project depending on which way it goes
 
 Teensy 3.6 as the main processor and Teensy 2.0 for the delayed LFO
-CD74HC4067 16 channel multiplexor x4
+CD74HC4067 16 channel multiplexors
 CD4504 level converters for 3.3 to 5v, 3.3 to 12v and 6v to 5v
 CD4053 for analogue switching
 CD4049 for some signal inversion
@@ -10,4 +10,6 @@ CD4011 for waveform switching logic
 TL074 quad op amp for sample and hold circuits and level converters
 Electric Druid EnvGen8C x2 for LFO slope and VCO glide circuits
 Electric Druid TAPLFO3 for replacement LFO
+AS3364 for VCA chips
+74HC595 shift registers for controlling digital outputs
 
