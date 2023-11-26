@@ -1,5 +1,9 @@
 * The Crumar Trilogy fully programmable project.
 
+Converting the Crumar Trilogy to fully programmable + effects
+
+![Synth](photos/synth.jpg)
+
 Many moons ago when I bought a Crumar Trilogy new from Chase Music in Manchester I soon realized that it was not the best "synthesizer" for the money and really it was just a glorified organ/strings machine.
 
 It only had 7 memories and the front panel for the synth and these memories only remembered about 9 settings of the synth on preset boards pot boards under the front panel. So no easy save and recall procedures and certainly limited parameters, Attack, Decay, Sustain, Release, Cutoff, Resonance, ADSR position, waveform and alt waveform I think, So not even the LFO, glide, VCO settings could be stored as that would affect the organ and strings.
@@ -25,3 +29,5 @@ Finally the strings, I had to create a filter for the timbre using a VCA and als
 All parameters were stored with the exception of the VCO 2 tuning, at the time my demux deisgn was rather flaky and the tuning was unstable. So I decided not to control the Master Tune. However I have now learnt how to make the demux stable and the tuning could be under control of the processorm but currently isn't.
 
 You may have noticed there are no schematics, unfortunately I didn't document much of this except for notes in a book that I have, it is fairly straightforwards as far as the MUX and demux are concerned but I would have to measure the output voltages to know what they were and I cannot for the life of me remember the schematics for the delayed LFO. Just the principles behind it. I might spend some time in the future and draw the schematics from my notes, but for now, know that it can be done and works well. I need to add a MIDI socket so I can send it program changes etc.
+
+I also recently added an FV-1 effects processor board so now you can add various effects such as reverb, echo, flanger, phaser etc to any section or all sections of the Trilogy.
