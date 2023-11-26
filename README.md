@@ -1,5 +1,3 @@
-* The Crumar Trilogy fully programmable project.
-
 Converting the Crumar Trilogy to fully programmable + effects
 
 ![Synth](photos/synth.jpg)
