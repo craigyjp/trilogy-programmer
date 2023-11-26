@@ -30,4 +30,4 @@ You may have noticed there are no schematics, unfortunately I didn't document mu
 
 It now has a MIDI in socket so I can send it program changes etc.
 
-I also recently added an FV-1 effects processor board so now you can add various effects such as reverb, echo, flanger, phaser etc to any section or all sections of the Trilogy.
+I also recently added an FV-1 effects processor board so now you can add various effects such as reverb, echo, flanger, phaser etc to any section or all sections of the Trilogy. This effective adds a set of stereo outputs for any effected sound and a footswitch to control the speed of the leslie effect fast/slow.
