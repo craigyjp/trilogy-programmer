@@ -1,6 +1,6 @@
 Converting the Crumar Trilogy to fully programmable + effects
 
-![Synth](photos/synth.jpg)
+![Synth](Photos/synth.jpg)
 
 Many moons ago when I bought a Crumar Trilogy new from Chase Music in Manchester I soon realized that it was not the best "synthesizer" for the money and really it was just a glorified organ/strings machine.
 
